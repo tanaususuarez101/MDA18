@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Crear plato</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked color="primary">Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="primary">Ingredientes </ion-label>
+        <ion-textarea formControlName="ingredients"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="primary">Elaboración </ion-label>
+        <ion-textarea formControlName="elaboration"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="primary">Dificultad</ion-label>
+        <ion-select formControlName="difficulty" interface="popover" placeholder="Fácil">
+          <ion-option value="Fácil">Fácil</ion-option>
+          <ion-option value="Medio">Medio</ion-option>
+          <ion-option value="Difícil">Difícil</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked color="primary">URL Imagen</ion-label>
+        <ion-input type="text" formControlName="thumbnail"></ion-input>
+      </ion-item>
+
+      <button ion-button block full type="submit" [disabled]="!dishForm.valid">
+        <ion-icon name="send"></ion-icon>
+        Guardar
+      </button>
+    </ion-list>
+
+  </form>
+
+</ion-content>

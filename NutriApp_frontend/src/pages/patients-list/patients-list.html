@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pacientes</ion-title>
+  </ion-navbar>
+  <ion-searchbar (ionInput)="searchPatient($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ng-container *ngIf="patients.length != 0">
+
+      <ion-item-sliding *ngFor="let patient of patients" >
+        <ion-item ion-item>
+          <ion-avatar item-start>
+            <img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png">
+          </ion-avatar>
+          <h2>{{ patient.name }}</h2>
+          <p>{{ patient.last_name }}</p>
+          <p item-right fixed>{{ patient.dni }}</p>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="primary" icon-start (click)="viewDetails(patient)">
+            <ion-icon name="eye"></ion-icon>
+            Perfil
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ng-container>
+    <ng-container *ngIf="patients.length == 0">
+      <ion-label>No hay pacientes que mostrar</ion-label>
+    </ng-container>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Añadir platos al {{this.navParams.get('dia')}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="dishesForm" (ngSubmit)="changeToCreateDiet()">
+    <ion-item>
+      <ion-label>Desayuno</ion-label>
+      <ion-select formControlName="breakfast">
+        <ion-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Media mañana</ion-label>
+      <ion-select formControlName="midmorning">
+        <ion-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Almuerzo</ion-label>
+      <ion-select formControlName="lunch">
+        <ion-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Merienda</ion-label>
+      <ion-select formControlName="snack">
+        <ion-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cena</ion-label>
+      <ion-select formControlName="dinner">
+        <ion-option *ngFor="let dish of dishes" [value]="dish.id">{{dish.name}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!dishesForm.valid">Submit</button>
+  </form>
+</ion-content>

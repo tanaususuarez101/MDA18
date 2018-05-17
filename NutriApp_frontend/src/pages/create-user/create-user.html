@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar [hideBackButton]="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Crear usuario</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goBack()">Cancelar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-list radio-group>
+        <ion-item>
+          <ion-label>Paciente</ion-label>
+          <ion-radio (click)="setRol('isPatient')" value="isPatient"></ion-radio>
+        </ion-item>
+        <ion-item >
+          <ion-label>Administrador</ion-label>
+          <ion-radio (click)="setRol('isAdmin')" value="isAdmin"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Nutricionista</ion-label>
+          <ion-radio (click)="setRol('isNutritionist')" value="isNutritionist"></ion-radio>
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-icon name="contact" item-start></ion-icon>
+        <ion-label floating>Nombre de usuario</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key" item-start></ion-icon>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label floating>Apellido</ion-label>
+        <ion-input type="text" formControlName="last_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+        <ion-label floating>Dni</ion-label>
+        <ion-input type="text" formControlName="dni"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label floating>Fecha de nacimiento</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD" formControlName="birth_date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button type="submit" round outline>Aceptar</button>
+    </div>
+  </form>
+</ion-content>

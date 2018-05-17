@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalles</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-item>
+      <h1>{{ dish.name }}</h1>
+      <p>{{ dish.difficulty }}</p>
+    </ion-item>
+
+    <img src="{{ dish.thumbnail }}" alt="">
+
+    <ion-card-content>
+      <h1>Ingredientes</h1>
+      <p>{{ dish.ingredients }}</p>
+      <h1>Elaboración</h1>
+      <p>{{ dish.elaboration }}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

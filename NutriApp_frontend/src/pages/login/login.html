@@ -1,0 +1,21 @@
+<ion-content padding>
+
+  <h2>NutriApp</h2>
+
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Usuario</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div class="center">
+      <button ion-button type="submit" round outline [disabled]="!myForm.valid">Iniciar sesión</button>
+    </div>
+  </form>
+
+</ion-content>

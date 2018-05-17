@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Editar perfil</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="contact" item-start></ion-icon>
+        <ion-label stacked>Nombre de usuario</ion-label>
+        <ion-input type="text" formControlName="username" placeholder="{{this.user.user.username}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key" item-start></ion-icon>
+        <ion-label floating>Contraseña actual</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key" item-start></ion-icon>
+        <ion-label floating>Contraseña nueva</ion-label>
+        <ion-input type="password" formControlName="password2"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="card" item-start></ion-icon>
+        <ion-label stacked>Dni</ion-label>
+        <ion-input type="text" formControlName="dni" placeholder="{{this.user.dni}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label stacked>Fecha de nacimiento</ion-label>
+        <ion-datetime type="date" displayFormat="YYYY/MM/DD" formControlName="birth_date" placeholder="{{this.user.birth_date}}"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input type="text" formControlName="name" placeholder="{{this.user.name}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="person" item-start></ion-icon>
+        <ion-label stacked>Apellido</ion-label>
+        <ion-input type="text" formControlName="last_name" placeholder="{{this.user.last_name}}"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button type="submit" round outline>Aceptar</button>
+    </div>
+  </form>
+</ion-content>

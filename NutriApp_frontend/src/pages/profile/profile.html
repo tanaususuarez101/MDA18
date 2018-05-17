@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Perfil
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding *ngIf="user.hasOwnProperty('id')==true">
+
+  <ion-list>
+    <ion-list-header>
+        <ion-avatar>
+          <img src="https://cdn0.iconfinder.com/data/icons/PRACTIKA/256/user.png">
+        </ion-avatar>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-icon name="person" item-start></ion-icon>
+      <ion-label stacked color="primary">Nombre</ion-label>
+      <ion-label> {{user.name}} </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person" item-start></ion-icon>
+      <ion-label stacked color="primary" >Apellidos </ion-label>
+      <ion-label> {{user.last_name}} </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar" item-start></ion-icon>
+      <ion-label stacked color="primary" >Fecha nacimiento </ion-label>
+      <ion-label> {{user.birth_date}} </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="card" item-start></ion-icon>
+      <ion-label stacked color="primary" >DNI</ion-label>
+      <ion-label> {{user.dni}} </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="contact" item-start></ion-icon>
+      <ion-label stacked color="primary" >Nombre usuario </ion-label>
+      <ion-label> {{user.user.username}} </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid *ngIf="current_user.user.isNutritionist && user.user.isPatient">
+    <ion-row>
+      <button  ion-button  (click)="viewDiets()" color="primary" icon-left full >
+        <ion-icon name="bookmarks" ></ion-icon>
+        Ver Dietas
+      </button>
+      <button  ion-button (click)="viewMeasurements()" color="danger" icon-left full >
+        <ion-icon name="body" ></ion-icon>
+        Mediciones corporales
+      </button>
+    </ion-row>
+  </ion-grid>
+  <ng-container *ngIf="current_user == user">
+    <button ion-button (click)="editProfile()" color="primary" icon-start full>
+      Editar
+    </button>
+  </ng-container>
+
+</ion-content>

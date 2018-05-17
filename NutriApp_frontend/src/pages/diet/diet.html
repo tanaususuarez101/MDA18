@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{diet.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-item>
+      <h2>{{diet.name}}</h2>
+      <br>
+      <p>Fecha de inicio: {{diet.init_date}}</p>
+      <br>
+      <p>Fecha fin: {{diet.expiration_date}}</p>
+      <br>
+      <p>Recomendaciones: {{diet.recommendations}}</p>
+      <br>
+
+    </ion-item>
+  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let meal of days; let i of index" (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      {{meal.dia}}
+      <ion-list *ngIf="isGroupShown(i)">
+        <ion-item *ngFor="let type of meal.dishes" (click)="changeToDishView(type.dish)">
+          <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+          {{type.name}}
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </ion-list>
+  <ion-fab *ngIf="current_user.user.isNutritionist" right >
+    <button ion-fab color="danger" bottom (click)="deleteDiet(diet.id)" mini>
+      <ion-icon name="remove"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="current_user.user.isPatient">
+      Mis dietas
+    </ion-title>
+    <ion-title *ngIf="current_user.user.isNutritionist">
+      Dietas del paciente {{patient_id}}
+    </ion-title>
+    <ion-buttons *ngIf="current_user.user.isNutritionist" end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ng-container *ngIf="diets.length != 0">
+    <ion-card *ngFor="let item of diets" (click)="changeToDietView(item)">
+      <ion-item>
+        <h2>{{item.name}}</h2>
+        <p>{{item.init_date}}</p>
+      </ion-item>
+    </ion-card>
+  </ng-container>
+  <ion-fab *ngIf="current_user.user.isNutritionist" right >
+    <button ion-fab bottom (click)="changeToCreateDiet()" mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+  <ng-container *ngIf="diets.length == 0">
+    <ion-label>No hay dietas asignadas a este paciente</ion-label>
+  </ng-container>
+</ion-content>

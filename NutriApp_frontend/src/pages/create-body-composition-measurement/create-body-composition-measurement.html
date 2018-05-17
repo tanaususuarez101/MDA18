@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar [hideBackButton]="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Crear medición corporal</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Cancelar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Peso</ion-label>
+        <ion-input type="number" formControlName="weight"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Altura</ion-label>
+        <ion-input type="number" formControlName="height"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>IMC: {{IMC}}</ion-label>
+        <button ion-button clear type="button" (click)="placeIMC()" item-right fixed>Calcular</button>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Porcentaje de grasa</ion-label>
+        <ion-input type="number" formControlName="fat_percentage"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Cantidad masa muscular</ion-label>
+        <ion-input type="number" formControlName="muscle_mass"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Porcentaje de agua</ion-label>
+        <ion-input type="number" formControlName="water_percentage"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button type="submit" round outline>Crear medición</button>
+    </div>
+  </form>
+
+</ion-content>

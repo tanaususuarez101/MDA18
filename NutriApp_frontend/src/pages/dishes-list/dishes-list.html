@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Platos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ng-container *ngIf="dishesList.length != 0">
+    <ion-list>
+      <ion-item-sliding *ngFor="let dish of dishesList">
+        <ion-item (click)="viewDish(dish)">
+          <ion-avatar item-start>
+            <img src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg">
+          </ion-avatar>
+          <h2>{{ dish.name }}</h2>
+          <p>{{dish.ingredients}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="deleteDish(dish.id)">
+            <ion-icon name="ios-trash"></ion-icon>
+            Eliminar
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
+
+  <ion-fab *ngIf="current_user.user.isNutritionist" right >
+    <button ion-fab bottom (click)="changeToCreateDish()" mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ng-container *ngIf="dishesList.length == 0">
+    <ion-label>No hay platos que mostrar</ion-label>
+  </ng-container>
+
+</ion-content>

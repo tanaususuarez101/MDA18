@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalles</ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="goBack()">Volver</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header color="primary">
+      <h2 >  {{bodyDetails.datetime}} </h2>
+      <ion-icon name="calendar" item-right></ion-icon>
+    </ion-list-header>
+
+    <ion-item>
+      Altura
+      <ion-note item-end>
+        {{bodyDetails.height}} m
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Peso
+      <ion-note item-end>
+        {{bodyDetails.weight}} kg
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      IMC
+      <ion-note item-end>
+        {{bodyDetails.imc}}
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Grasa
+      <ion-note item-end>
+        {{bodyDetails.fat_percentage}} %
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Masa muscular
+      <ion-note item-end>
+        {{bodyDetails.muscle_mass}} kg
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      Agua
+      <ion-note item-end>
+        {{bodyDetails.water_percentage}} %
+      </ion-note>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

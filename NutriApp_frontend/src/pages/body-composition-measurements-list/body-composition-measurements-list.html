@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Mi composición corporal</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="createMeasurement()">Añadir</button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-searchbar (ionInput)="getHistory($event)"></ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="bookmarks" item-right></ion-icon>
+      Historial
+    </ion-list-header>
+    <ng-container *ngIf="myBodyHistory.length != 0">
+      <a ion-item *ngFor="let history of myBodyHistory" (click)="openDetails(history)">
+        {{history.datetime}}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="myBodyHistory.length == 0">
+      <ion-label>No hay mediciones de composición corporal</ion-label>
+    </ng-container>
+  </ion-list>
+</ion-content>
